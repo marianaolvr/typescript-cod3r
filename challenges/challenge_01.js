@@ -22,3 +22,4 @@ var funcionario = {
 console.log(funcionario.supervisores);
 console.log(funcionario.baterPonto(5));
 // Array<string> também poderia ser string[]
+//# sourceMappingURL=challenge_01.js.map

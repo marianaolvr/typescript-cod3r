@@ -149,3 +149,4 @@ podeSerNulo = 'abc';
 var nullable = null;
 nullable = 12;
 //acima, com o tipo nulo explicito, não é any
+//# sourceMappingURL=type.js.map
