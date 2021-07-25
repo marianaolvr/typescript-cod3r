@@ -119,3 +119,54 @@ function tuplaParam2(...params: [number, string, boolean]){
 }
 
 tuplaParam2(...tupla)
+
+// DESTRUCTURING - pegar dados dentro de uma estrutura e expor de uma forma mais fácil (array)
+// DESTRUCTURING ARRAY
+const caracteristicas = ['motos zetec 1.8', 2020]
+// const motor = caracteristicas[0]
+// const ano = caracteristicas[1]
+
+const [motor, ano] = caracteristicas
+console.log(motor)
+console.log(ano)
+
+// DESTRUCTURING OBJECT
+
+const item = {
+    nome: 'SSD 480GB',
+    preco: 200,
+    caracteristica: {
+        w: 'importado',
+    }
+}
+
+const nomeItem = item.nome
+const precoItem = item.preco
+console.log(nomeItem)
+console.log(precoItem)
+
+//nome abaixo está usando um label, alias, chamando nome de n
+const { nome: n, preco, caracteristica: { w } } = item
+console.log(n)
+console.log(preco)
+
+
+
+// template string
+const usuarioID: string = 'fulanotxt'
+const notificacoes: number = 9
+
+const boasVindas = 'Bem-vindo ' + usuarioID + ' Notificacoes: ' + notificacoes
+console.log(boasVindas);
+
+const BoasVindasComTemplateString = 
+    `Bem-vindo ${usuarioID} Notificaçoes: ${notificacoes}`
+console.log(BoasVindasComTemplateString)
+
+const BoasVindasComTemplateStringETernario = 
+`Bem-vindo ${usuarioID}, Notificaçoes: ${(notificacoes) > 9 ? '+ de 9 notificacoes' : notificacoes }`
+console.log(BoasVindasComTemplateStringETernario)
+
+console.log(`${1 + 1 * 30}`)
+console.log(`${(1 + 1) * 30}`)
+console.log(`Motor: ${caracteristicas[0]}`)

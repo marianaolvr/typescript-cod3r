@@ -115,4 +115,40 @@ function tuplaParam2() {
     console.log("2) " + params[0] + " " + params[1] + " " + params[2]);
 }
 tuplaParam2.apply(void 0, tupla);
+// DESTRUCTURING - pegar dados dentro de uma estrutura e expor de uma forma mais fácil (array)
+// DESTRUCTURING ARRAY
+var caracteristicas = ['motos zetec 1.8', 2020];
+// const motor = caracteristicas[0]
+// const ano = caracteristicas[1]
+var motor = caracteristicas[0], ano = caracteristicas[1];
+console.log(motor);
+console.log(ano);
+// DESTRUCTURING OBJECT
+var item = {
+    nome: 'SSD 480GB',
+    preco: 200,
+    caracteristica: {
+        w: 'importado',
+    }
+};
+var nomeItem = item.nome;
+var precoItem = item.preco;
+console.log(nomeItem);
+console.log(precoItem);
+//nome abaixo está usando um label, alias, chamando nome de n
+var n = item.nome, preco = item.preco, w = item.caracteristica.w;
+console.log(n);
+console.log(preco);
+// template string
+var usuarioID = 'fulanotxt';
+var notificacoes = 9;
+var boasVindas = 'Bem-vindo ' + usuarioID + ' Notificacoes: ' + notificacoes;
+console.log(boasVindas);
+var BoasVindasComTemplateString = "Bem-vindo " + usuarioID + " Notifica\u00E7oes: " + notificacoes;
+console.log(BoasVindasComTemplateString);
+var BoasVindasComTemplateStringETernario = "Bem-vindo " + usuarioID + ", Notifica\u00E7oes: " + ((notificacoes) > 9 ? '+ de 9 notificacoes' : notificacoes);
+console.log(BoasVindasComTemplateStringETernario);
+console.log("" + (1 + 1 * 30));
+console.log("" + (1 + 1) * 30);
+console.log("Motor: " + caracteristicas[0]);
 //# sourceMappingURL=ecmascript.js.map
