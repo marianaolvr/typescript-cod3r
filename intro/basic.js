@@ -1,4 +1,4 @@
 "use strict";
-var a = 'Olá, TypeScript';
+const a = 'Olá, TypeScript';
 console.log(a);
 //# sourceMappingURL=basic.js.map

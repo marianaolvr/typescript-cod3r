@@ -1,20 +1,20 @@
 "use strict";
-var canal = 'Gaveta';
-var inscritos = 2585;
+let canal = 'Gaveta';
+let inscritos = 2585;
 canal = inscritos;
-console.log("canal = " + canal);
+console.log(`canal = ${canal}`);
 // esse arquivo não será compilado
 // com a propriedade "noEmitOnError": true no tsconfig
 //"noImplicitAny": false,
 function soma(a, b) {
     return a + b;
 }
-var qualquerCoisa;
+let qualquerCoisa;
 qualquerCoisa = 12;
 qualquerCoisa = 'abc';
 //strictNullChecks
 function saudar(isManha) {
-    var saudacao;
+    let saudacao;
     if (isManha) {
         saudacao = 'Bom dia';
     }

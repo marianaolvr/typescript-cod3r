@@ -1,46 +1,39 @@
 "use strict";
-var __spreadArray = (this && this.__spreadArray) || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
-};
-var _this = this;
 //let e const
 console.log(seraQuePode);
 var seraQuePode = '?'; // hoisting
-var SeraQuePode = '?'; // não vai ter hoisting, mas vai continuar como undefined
+let SeraQuePode = '?'; // não vai ter hoisting, mas vai continuar como undefined
 // Arrow function
 function somar(n1, n2) {
     return n1 + n2;
 }
 console.log(somar(2, 2));
-var subtrair = function (n1, n2) { return n1 - n2; };
+const subtrair = (n1, n2) => n1 - n2;
 console.log(subtrair(2, 3));
-var saudacao = function () { return console.log('olá'); };
+const saudacao = () => console.log('olá');
 saudacao();
 // não dá pra usar um único parametros sem parenteses por causa da tipagem
-var falarCom = function (pessoa) { return console.log('olá' + pessoa); };
+const falarCom = pessoa => console.log('olá' + pessoa);
 falarCom('João');
-var falarComOutraPessoa = function (pessoa) { return console.log('olá' + pessoa); };
+const falarComOutraPessoa = (pessoa) => console.log('olá' + pessoa);
 falarComOutraPessoa('João');
 // this
 function normalComThis() {
     console.log(this);
 }
 normalComThis();
-var normalComThisEspecial = normalComThis.bind('ana');
+const normalComThisEspecial = normalComThis.bind('ana');
 normalComThisEspecial();
 //arrow com this
 //quem é o this na linha anterior do contexto no qual a função foi definida????
 console.log(this);
-var arrowComThis = function () { return console.log(_this); };
+const arrowComThis = () => console.log(this);
 arrowComThis();
-var arrowComThisEspecial = arrowComThis
+const arrowComThisEspecial = arrowComThis
     .bind('ana');
 arrowComThisEspecial();
 // função com patametros padrão
-function contagemRegressive(inicio) {
-    if (inicio === void 0) { inicio = 3; }
+function contagemRegressive(inicio = 3) {
     console.log(inicio);
     while (inicio > 0) {
         inicio--;
@@ -50,9 +43,7 @@ function contagemRegressive(inicio) {
 }
 contagemRegressive();
 contagemRegressive(10);
-function contagemProgressiva(inicio, fim) {
-    if (inicio === void 0) { inicio = 5; }
-    if (fim === void 0) { fim = inicio - 5; }
+function contagemProgressiva(inicio = 5, fim = inicio - 5) {
     console.log(inicio);
     while (inicio < 0) {
         inicio--;
@@ -63,92 +54,115 @@ function contagemProgressiva(inicio, fim) {
 contagemProgressiva();
 contagemProgressiva(10);
 // Rest & Spread
-var numbers = [1, 2, 3, 4, 55, -5];
+const numbers = [1, 2, 3, 4, 55, -5];
 console.log(Math.max(numbers));
 // acima errado porque math espera um elemento não array
-console.log(Math.max.apply(Math, numbers));
-var turmaA = ['maria', 'joao', 'fernanda'];
-var turmaB = __spreadArray(__spreadArray(['mariana'], turmaA), ['Miguel']);
+console.log(Math.max(...numbers));
+const turmaA = ['maria', 'joao', 'fernanda'];
+const turmaB = ['mariana', ...turmaA, 'Miguel'];
 console.log(turmaA);
 console.log(turmaB);
 function retornarArray(arg1, arg2) {
     return [arg1, arg2];
 }
 // abaixo ts reclama, mas js deixa passar mas retornar o array apenas com dois argumentos
-var numeros = retornarArray(1, 2, 3, 4);
+const numeros = retornarArray(1, 2, 3, 4);
 console.log(numeros);
 //abaixo, ele pega qualquer quantidade de argumentos e coloca dentro de uma array
-function retornarArrayDois() {
-    var args = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i] = arguments[_i];
-    }
+function retornarArrayDois(...args) {
     return args;
 }
-var numeros2 = retornarArrayDois(25, 22, 55, 36, 85);
+const numeros2 = retornarArrayDois(25, 22, 55, 36, 85);
 console.log(numeros2);
-console.log(retornarArrayDois.apply(void 0, numbers));
+console.log(retornarArrayDois(...numbers));
 // multiplos parametros com spread e rest
-function retornarArrayTres(a) {
-    var args = [];
-    for (var _i = 1; _i < arguments.length; _i++) {
-        args[_i - 1] = arguments[_i];
-    }
+function retornarArrayTres(a, ...args) {
     console.log(a);
     return args;
 }
 // ele vai retirar o primeiro número do meu array, dar um console log, e depois retornar a array com os outros números
-var numeros3 = retornarArrayTres(22, 66, 88, 77);
+const numeros3 = retornarArrayTres(22, 66, 88, 77);
 console.log(numeros3);
 // REST & SPREAD (TUPLA)
-var tupla = [1, 'abc', false];
+const tupla = [1, 'abc', false];
 function tuplaParam1(a, b, c) {
-    console.log("1) " + a + " " + b + " " + c);
+    console.log(`1) ${a} ${b} ${c}`);
 }
-tuplaParam1.apply(void 0, tupla);
-function tuplaParam2() {
-    var params = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        params[_i] = arguments[_i];
-    }
+tuplaParam1(...tupla);
+function tuplaParam2(...params) {
     console.log(Array.isArray(params));
-    console.log("2) " + params[0] + " " + params[1] + " " + params[2]);
+    console.log(`2) ${params[0]} ${params[1]} ${params[2]}`);
 }
-tuplaParam2.apply(void 0, tupla);
+tuplaParam2(...tupla);
 // DESTRUCTURING - pegar dados dentro de uma estrutura e expor de uma forma mais fácil (array)
 // DESTRUCTURING ARRAY
-var caracteristicas = ['motos zetec 1.8', 2020];
+const caracteristicas = ['motos zetec 1.8', 2020];
 // const motor = caracteristicas[0]
 // const ano = caracteristicas[1]
-var motor = caracteristicas[0], ano = caracteristicas[1];
+const [motor, ano] = caracteristicas;
 console.log(motor);
 console.log(ano);
 // DESTRUCTURING OBJECT
-var item = {
+const item = {
     nome: 'SSD 480GB',
     preco: 200,
     caracteristica: {
         w: 'importado',
     }
 };
-var nomeItem = item.nome;
-var precoItem = item.preco;
+const nomeItem = item.nome;
+const precoItem = item.preco;
 console.log(nomeItem);
 console.log(precoItem);
 //nome abaixo está usando um label, alias, chamando nome de n
-var n = item.nome, preco = item.preco, w = item.caracteristica.w;
+const { nome: n, preco, caracteristica: { w } } = item;
 console.log(n);
 console.log(preco);
 // template string
-var usuarioID = 'fulanotxt';
-var notificacoes = 9;
-var boasVindas = 'Bem-vindo ' + usuarioID + ' Notificacoes: ' + notificacoes;
+const usuarioID = 'fulanotxt';
+const notificacoes = 9;
+const boasVindas = 'Bem-vindo ' + usuarioID + ' Notificacoes: ' + notificacoes;
 console.log(boasVindas);
-var BoasVindasComTemplateString = "Bem-vindo " + usuarioID + " Notifica\u00E7oes: " + notificacoes;
+const BoasVindasComTemplateString = `Bem-vindo ${usuarioID} Notificaçoes: ${notificacoes}`;
 console.log(BoasVindasComTemplateString);
-var BoasVindasComTemplateStringETernario = "Bem-vindo " + usuarioID + ", Notifica\u00E7oes: " + ((notificacoes) > 9 ? '+ de 9 notificacoes' : notificacoes);
+const BoasVindasComTemplateStringETernario = `Bem-vindo ${usuarioID}, Notificaçoes: ${(notificacoes) > 9 ? '+ de 9 notificacoes' : notificacoes}`;
 console.log(BoasVindasComTemplateStringETernario);
-console.log("" + (1 + 1 * 30));
-console.log("" + (1 + 1) * 30);
-console.log("Motor: " + caracteristicas[0]);
+console.log(`${1 + 1 * 30}`);
+console.log(`${(1 + 1) * 30}`);
+console.log(`Motor: ${caracteristicas[0]}`);
+// Promises
+// Como trabalhamos com assincronismo em JS?
+// Normalmente com funções callback
+function esperar3s() {
+    setTimeout(() => {
+        console.log('3 segundos depois...');
+    }, 3000);
+}
+esperar3s();
+function esperar3sDois(callback) {
+    setTimeout(() => {
+        callback('3 segundos depois...');
+    }, 3000);
+}
+esperar3sDois(function (resultado) {
+    console.log(resultado);
+});
+// convertendo para PROMISE
+function esperar3sPromise() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve('3 segundos depois promise...');
+        }, 3000);
+    });
+}
+esperar3sPromise().then(dado => console.log(dado));
+// com a promise consigo encadear mais tranquilamente as chamadas
+// exemplo API StarWars
+fetch('https://swapi.dev/api/people/1/')
+    .then(response => response.json())
+    .then(character => character.films)
+    .then(films => fetch(films[0]))
+    .then(responseFilm => responseFilm.json())
+    .then(film => console.log(film.title));
+// ações assíncrinas acima. se eu fosse fazer com callback teria um código muito maior
 //# sourceMappingURL=ecmascript.js.map

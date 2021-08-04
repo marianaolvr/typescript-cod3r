@@ -8,9 +8,9 @@ Criar um objeto funcionario com:
     -> Fora do normal(>8)
 
 */
-var funcionario = {
+let funcionario = {
     supervisores: ['João', 'Maria', 'José'],
-    baterPonto: function (hrs) {
+    baterPonto(hrs) {
         if (hrs <= 8) {
             return 'Tudo certo. Ponto normal';
         }

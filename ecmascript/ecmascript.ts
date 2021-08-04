@@ -170,3 +170,46 @@ console.log(BoasVindasComTemplateStringETernario)
 console.log(`${1 + 1 * 30}`)
 console.log(`${(1 + 1) * 30}`)
 console.log(`Motor: ${caracteristicas[0]}`)
+
+// Promises
+
+// Como trabalhamos com assincronismo em JS?
+// Normalmente com funções callback
+
+function esperar3s() {
+    setTimeout(() => {
+        console.log('3 segundos depois...')
+    }, 3000)
+}
+esperar3s()
+
+function esperar3sDois(callback: (dado: string) => void) {
+    setTimeout(() => {
+        callback('3 segundos depois...')
+    }, 3000)
+}
+esperar3sDois(function(resultado: string) {
+    console.log(resultado)
+})
+
+// convertendo para PROMISE
+function esperar3sPromise() {
+    return new Promise((resolve: any) => {
+        setTimeout(() => {
+            resolve('3 segundos depois promise...')
+        }, 3000)
+    })
+}
+esperar3sPromise().then(dado => console.log(dado))
+
+// com a promise consigo encadear mais tranquilamente as chamadas
+// exemplo API StarWars
+
+fetch('https://swapi.dev/api/people/1/')
+    .then(response => response.json())
+    .then(character => character.films)
+    .then(films => fetch(films[0]))
+    .then(responseFilm => responseFilm.json())
+    .then(film => console.log(film.title))
+// ações assíncrinas acima. se eu fosse fazer com callback teria um código muito maior
+
