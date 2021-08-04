@@ -211,5 +211,6 @@ fetch('https://swapi.dev/api/people/1/')
     .then(films => fetch(films[0]))
     .then(responseFilm => responseFilm.json())
     .then(film => console.log(film.title))
+    .catch(response => console.log(response))
 // ações assíncrinas acima. se eu fosse fazer com callback teria um código muito maior
-
+// cair no catch é o reject da Promise
