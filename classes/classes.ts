@@ -72,3 +72,47 @@ console.log('resume 1', ProductWithMethodResume1.resume())
 
 const ProductWithMethodResume2 = new ProductWithMethodResume('Colar', 50, 0.15)
 console.log('resume 2', ProductWithMethodResume2.resume())
+
+// modificadores - modifiers
+class Car { 
+  private currentSpeed: number = 0
+    constructor(public brand: string, public model: string, private maxSpeed: number = 200){
+  }
+
+  private changeSpeed(delta: number): number {
+    const newSpeed = this.currentSpeed + delta
+    const validSpeed = newSpeed >= 0 && newSpeed <= this.maxSpeed
+
+    if (validSpeed) {
+      this.currentSpeed = newSpeed
+    } else {
+      this.currentSpeed = delta > 0 ? this.maxSpeed : 0
+    }
+    return this.currentSpeed
+  }
+
+  public speedUp(): number {
+    return this.changeSpeed(5)
+  }
+
+  public brake(): number {
+    return this.changeSpeed(-5)
+  }
+}
+
+const myCar = new Car('Ford', 'Ka', 185);
+console.log('firt speedup', myCar.speedUp())
+console.log('second speedup', myCar.speedUp())
+
+// max speed
+Array(50).fill(0).forEach(() => myCar.speedUp())
+console.log('max speed', myCar.speedUp())
+
+//break
+console.log(myCar.brake());
+Array(30).fill(0).forEach(() => myCar.brake())
+console.log('max speed after 20', myCar.brake())
+
+// simulate "errors" from JavaScript that dont have the modifiers (method is private!)
+myCar.currentSpeed = 300;
+console.log('atual ->' + myCar.currentSpeed)
