@@ -79,7 +79,7 @@ class Car {
     constructor(public brand: string, public model: string, private maxSpeed: number = 200){
   }
 
-  private changeSpeed(delta: number): number {
+  protected changeSpeed(delta: number): number {
     const newSpeed = this.currentSpeed + delta
     const validSpeed = newSpeed >= 0 && newSpeed <= this.maxSpeed
 
@@ -116,3 +116,24 @@ console.log('max speed after 20', myCar.brake())
 // simulate "errors" from JavaScript that dont have the modifiers (method is private!)
 myCar.currentSpeed = 300;
 console.log('atual ->' + myCar.currentSpeed)
+
+// herança
+
+class Ferrari extends Car {
+  constructor(model: string, maxSpeed: number) {
+    super('Ferrari', model, maxSpeed)
+    // códigos de inicialização da classe aqui
+  }
+  public speedUp(): number {
+      return this.changeSpeed(20)
+  }
+
+  public brake(): number {
+      return this.changeSpeed(-15)
+  }
+}
+
+const f40 = new Ferrari(, 'F40', 324)
+console.log(`${f40.brand} ${f40.model}` )
+console.log(f40.speedUp())
+console.log(f40.brake())

@@ -92,4 +92,21 @@ console.log('max speed after 20', myCar.brake());
 // simulate "errors" from JavaScript that dont have the modifiers (method is private!)
 myCar.currentSpeed = 300;
 console.log('atual ->' + myCar.currentSpeed);
+// herança
+class Ferrari extends Car {
+    constructor(model, maxSpeed) {
+        super('Ferrari', model, maxSpeed);
+        // códigos de inicialização da classe aqui
+    }
+    speedUp() {
+        return this.changeSpeed(20);
+    }
+    brake() {
+        return this.changeSpeed(-15);
+    }
+}
+const f40 = new Ferrari('F40', 324);
+console.log(`${f40.brand} ${f40.model}`);
+console.log(f40.speedUp());
+console.log(f40.brake());
 //# sourceMappingURL=classes.js.map
