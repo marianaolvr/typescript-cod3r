@@ -118,7 +118,6 @@ myCar.currentSpeed = 300;
 console.log('atual ->' + myCar.currentSpeed)
 
 // herança
-
 class Ferrari extends Car {
   constructor(model: string, maxSpeed: number) {
     super('Ferrari', model, maxSpeed)
@@ -133,7 +132,26 @@ class Ferrari extends Car {
   }
 }
 
-const f40 = new Ferrari(, 'F40', 324)
+const f40 = new Ferrari('F40', 324)
 console.log(`${f40.brand} ${f40.model}` )
 console.log(f40.speedUp())
 console.log(f40.brake())
+
+// Getters & Setters
+class Person {
+  private _age: number = 0
+
+  get age(): number {
+    return this._age
+  }
+
+  set age(value: number) {
+    if(value >= 0 && value <= 120) {
+      this._age = value
+    }
+  }
+}
+
+const guy1 = new Person
+guy1.age = 100
+console.log(guy1.age)

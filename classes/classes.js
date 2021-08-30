@@ -109,4 +109,21 @@ const f40 = new Ferrari('F40', 324);
 console.log(`${f40.brand} ${f40.model}`);
 console.log(f40.speedUp());
 console.log(f40.brake());
+// Getters & Setters
+class Person {
+    constructor() {
+        this._age = 0;
+    }
+    get age() {
+        return this._age;
+    }
+    set age(value) {
+        if (value >= 0 && value <= 120) {
+            this._age = value;
+        }
+    }
+}
+const guy1 = new Person;
+guy1.age = 100;
+console.log(guy1.age);
 //# sourceMappingURL=classes.js.map
