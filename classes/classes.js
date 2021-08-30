@@ -126,4 +126,23 @@ class Person {
 const guy1 = new Person;
 guy1.age = 100;
 console.log(guy1.age);
+//Membros estáticos
+// quando um valor é estático está associado à Classe e não à instância.
+// ou seja, terei apenas uma única cópia daquele valor para uma determinada classe.
+// sem static
+class Mathematic {
+    static circArea(radius) {
+        return this.PI * radius * radius;
+    }
+}
+Mathematic.PI = 3.1416;
+// const m1 = new Mathematic()
+// m1.PI = 4.2
+// console.log('m1', m1.circArea(4))
+// const m2 = new Mathematic()
+// console.log('m2', m2.circArea(4))
+// sem o static:
+// console.log(new Mathematic().circArea(4))
+//com o static:
+console.log(Mathematic.circArea(4));
 //# sourceMappingURL=classes.js.map
